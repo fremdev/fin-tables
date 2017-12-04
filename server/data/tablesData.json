@@ -1,1 +1,10 @@
-{"Revenue":5,"Profit":25,"Gross Income":20}
+{
+  "Revenue": [],
+  "Profit": [],
+  "Gross Income": [],
+  "Assets": [],
+  "Liabilities": [],
+  "Price per acre": [],
+  "Number acres": [],
+  "Input costs": []
+}
