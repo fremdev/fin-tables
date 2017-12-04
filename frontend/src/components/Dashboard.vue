@@ -1,13 +1,12 @@
 <template>
   <div class="dashboard">
-    <button @click="saveTablesData">Test save</button>
     <navigation />
     <router-view />
   </div>
 </template>
 
 <script>
-import http from '@/helpers/http';
+import { mapActions } from 'vuex';
 import Navigation from '@/components/Nav';
 
 export default {
@@ -29,28 +28,15 @@ export default {
   },
 
   mounted() {
-    this.getRates();
+    this.fetchRates();
+    this.fetchTablesData();
   },
 
   methods: {
-    getRates() {
-      http.get('rates')
-        .then((res) => {
-          this.rates = res.data.currencies.currency;
-        })
-        .catch((err) => {
-          console.log('Unable to get current rates', err);
-        });
-    },
-    saveTablesData() {
-      http.post('data', this.tablesData)
-        .then(() => {
-          console.log('Data was successfully saved');
-        })
-        .catch((err) => {
-          console.log('Unable to save data', err);
-        });
-    },
+    ...mapActions({
+      fetchTablesData: 'fetchTablesData',
+      fetchRates: 'fetchRates',
+    }),
   },
 };
 </script>
