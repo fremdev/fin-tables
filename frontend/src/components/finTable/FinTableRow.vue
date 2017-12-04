@@ -1,7 +1,7 @@
 <template>
   <tr>
     <th>{{ title }}</th>
-    <td v-for="year in years" :key="year">{{ startYear + year }}</td>
+    <td v-for="(year, index) in years" :key="year">{{ values[index] }}</td>
   </tr>
 </template>
 
@@ -20,6 +20,10 @@ export default {
     years: {
       type: Number,
       default: 4,
+    },
+    values: {
+      type: Array,
+      required: true,
     },
   },
 };

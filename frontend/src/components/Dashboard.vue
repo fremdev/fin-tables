@@ -1,12 +1,12 @@
 <template>
   <div class="dashboard">
     <navigation />
-    <router-view />
+    <router-view :tablesData="tablesData" />
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import Navigation from '@/components/Nav';
 
 export default {
@@ -16,20 +16,16 @@ export default {
     Navigation,
   },
 
-  data() {
-    return {
-      rates: null,
-      tablesData: {
-        Revenue: 5,
-        Profit: 25,
-        'Gross Income': 20,
-      },
-    };
-  },
-
   mounted() {
     this.fetchRates();
     this.fetchTablesData();
+  },
+
+  computed: {
+    ...mapState({
+      rates: state => state.tablesData.rates,
+      tablesData: state => state.tablesData.data,
+    }),
   },
 
   methods: {

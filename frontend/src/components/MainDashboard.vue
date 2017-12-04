@@ -16,6 +16,12 @@ export default {
     FinTable,
   },
 
+  props: {
+    tablesData: {
+      type: Object,
+    },
+  },
+
   data() {
     return {
       firstTableTitles: ['Revenue', 'Profit', 'Gross Income'],

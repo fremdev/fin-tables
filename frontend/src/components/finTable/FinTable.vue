@@ -1,7 +1,10 @@
 <template>
   <table>
     <fin-table-header />
-    <fin-table-row v-for="title in titles" :key="title" :title="title" />
+    <fin-table-row v-for="(values, title) in tableData"
+      :key="title"
+      :title="title"
+      :values="values" />
   </table>
 </template>
 
@@ -11,13 +14,15 @@ import FinTableRow from './FinTableRow';
 
 export default {
   name: 'fin-table',
+
   components: {
     FinTableHeader,
     FinTableRow,
   },
+
   props: {
-    titles: {
-      type: Array,
+    tableData: {
+      type: Object,
       required: true,
     },
   },
