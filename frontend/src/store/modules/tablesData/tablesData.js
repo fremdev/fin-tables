@@ -1,4 +1,5 @@
 /* eslint-disable */
+import api from '@/helpers/api';
 import {
   SET_TABLES_DATA,
   SET_RATES,
@@ -20,13 +21,31 @@ const mutations = {
 
 const actions = {
   fetchTablesData({ commit }, data) {
-    commit(SET_TABLES_DATA, data);
+    api.getTablesData()
+      .then((data) => {
+        commit(SET_TABLES_DATA, data);
+      })
+      .catch((err) => {
+        console.log('Error from fetchTablesData', err);
+      })
   },
+
   updateTablesData({ commit }, data) {
     commit(SET_TABLES_DATA, data);
+    api.saveTablesData()
+      .catch((err) => {
+        console.log('Error from updateTablesData', err);
+      });
   },
+
   fetchRates({ commit }, rates) {
-    commit(SET_RATES, rates);
+    api.getRates()
+      .then((rates) => {
+        commit(SET_RATES, rates);
+      })
+      .catch((err) => {
+        console.log('Error from fetchRates', err);
+      });
   },
 };
 
