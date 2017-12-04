@@ -9,7 +9,7 @@ export default {
     return http.get('data')
       .then(res => res.data);
   },
-  saveTablesData() {
-    return http.post('data', this.tablesData);
+  saveTablesData(data) {
+    return http.post('data', data);
   },
 };
