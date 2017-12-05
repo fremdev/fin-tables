@@ -2,6 +2,7 @@
 import api from '@/helpers/api';
 import {
   SET_TABLES_DATA,
+  UPDATE_CELL_DATA,
   SET_RATES,
 } from './mutation-types';
 
@@ -17,6 +18,9 @@ const mutations = {
   [SET_RATES](state, rates) {
     state.rates = rates;
   },
+  [UPDATE_CELL_DATA](state, data) {
+    state.data[data.title][data.index] = {...data.data};
+  },
 };
 
 const actions = {
@@ -30,12 +34,8 @@ const actions = {
       })
   },
 
-  updateTablesData({ commit }, data) {
-    commit(SET_TABLES_DATA, data);
-    api.saveTablesData()
-      .catch((err) => {
-        console.log('Error from updateTablesData', err);
-      });
+  updateCellData({ commit }, data) {
+    commit(UPDATE_CELL_DATA, data);
   },
 
   fetchRates({ commit }, rates) {
