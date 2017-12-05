@@ -1,6 +1,6 @@
 <template>
   <table>
-    <fin-table-header />
+    <fin-table-header @onBaseCurrencyChange="changeBaseCurrency" :currency="baseCurrency" />
     <fin-table-row v-for="(values, title) in tableData"
       :key="title"
       :title="title"
@@ -24,6 +24,18 @@ export default {
     tableData: {
       type: Object,
       required: true,
+    },
+  },
+
+  data() {
+    return {
+      baseCurrency: 'USD',
+    };
+  },
+
+  methods: {
+    changeBaseCurrency(currency) {
+      this.baseCurrency = currency;
     },
   },
 };

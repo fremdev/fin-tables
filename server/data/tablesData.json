@@ -1,6 +1,6 @@
 {
   "Revenue": [],
-  "Profit": [],
+  "Profit": [{"value": 100, "currency": "USD"}, {"value": 50, "currency": "USD"}, {"value": 75, "currency": "USD"}, {"value": 80, "currency": "USD"}],
   "Gross Income": [],
   "Assets": [],
   "Liabilities": [],
