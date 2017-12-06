@@ -1,6 +1,6 @@
 <template>
   <table>
-    <fin-table-header @onBaseCurrencyChange="changeBaseCurrency" :currency="baseCurrency" />
+    <fin-table-header @baseCurrencyChange="changeBaseCurrency" :currency="baseCurrency" />
     <fin-table-row v-for="(values, title) in tableData"
       :key="title"
       :title="title"
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import FinTableHeader from './FinTableHeader';
 import FinTableRow from './FinTableRow';
 
@@ -34,8 +35,14 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      updateRowsCurrency: 'updateRowsCurrency',
+    }),
+
     changeBaseCurrency(currency) {
       this.baseCurrency = currency;
+      const rows = Object.keys(this.tableData);
+      this.updateRowsCurrency({ rows, currency });
     },
   },
 };

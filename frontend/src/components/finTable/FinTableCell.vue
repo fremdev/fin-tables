@@ -1,7 +1,7 @@
 <template>
-  <div class="cell">
-    <input type="text" :value="currentValue" @change="handleValueChange" />
-    <select :value="currentCurrency" @change="handleCurrencyChange">
+  <div v-if="editMode" class="cell">
+    <input type="text" :value="value" @change="handleValueChange" />
+    <select :value="currency" @change="handleCurrencyChange">
       <option value="CLP">CLP</option>
       <option value="CNY">CNY</option>
       <option value="EUR">EUR</option>
@@ -9,11 +9,14 @@
       <option value="USD">USD</option>
     </select>
   </div>
+  <div v-else class="cell">
+    <span>{{ value }} {{ currency }}</span>
+  </div>
 
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'fin-table-cell',
@@ -30,11 +33,10 @@ export default {
     currency: {},
   },
 
-  data() {
-    return {
-      currentValue: this.value,
-      currentCurrency: this.currency,
-    };
+  computed: {
+    ...mapState({
+      editMode: state => state.settings.editMode,
+    }),
   },
 
   methods: {
@@ -43,26 +45,25 @@ export default {
     }),
 
     handleValueChange(e) {
-      const { title, index, currentCurrency } = this;
+      const { title, index, currency } = this;
       const value = Number(e.target.value);
       /* eslint-disable no-self-compare */
       if (value === value) {
-        this.currentValue = value;
         this.updateCellData({
           title,
           index,
-          data: { value, currency: currentCurrency },
+          data: { value, currency },
         });
       }
     },
 
     handleCurrencyChange(e) {
-      this.currentCurrency = e.target.value;
-      const { title, index, currentValue, currentCurrency } = this;
+      const currency = e.target.value;
+      const { title, index, value } = this;
       this.updateCellData({
         title,
         index,
-        data: { value: currentValue, currency: currentCurrency },
+        data: { value, currency },
       });
     },
   },

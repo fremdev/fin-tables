@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>
-        <select :value="currentCurrency" @change="handleCurrencyChange">
+        <select v-if="editMode" :value="currentCurrency" @change="handleCurrencyChange">
           <option value="CLP">CLP</option>
           <option value="CNY">CNY</option>
           <option value="EUR">EUR</option>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'fin-table-header',
   props: {
@@ -39,9 +41,16 @@ export default {
     };
   },
 
+  computed: {
+    ...mapState({
+      editMode: state => state.settings.editMode,
+    }),
+  },
+
   methods: {
-    handleCurrencyChange() {
-      console.log('handleCurrencyChange');
+    handleCurrencyChange(e) {
+      this.currentCurrency = e.target.value;
+      this.$emit('baseCurrencyChange', this.currentCurrency);
     },
   },
 };
