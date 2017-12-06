@@ -4,6 +4,7 @@ import {
   SET_TABLES_DATA,
   UPDATE_CELL_DATA,
   SET_RATES,
+  UPDATE_ROWS_CURRENCY,
 } from './mutation-types';
 
 const state = {
@@ -19,8 +20,15 @@ const mutations = {
     state.rates = rates;
   },
   [UPDATE_CELL_DATA](state, data) {
-    state.data[data.title][data.index] = {...data.data};
+    const row = state.data[data.title];
+    row[data.index] = { ...data.data };
+    state.data[data.title] = row;
   },
+  [UPDATE_ROWS_CURRENCY](state, data) {
+    data.rows.forEach(row => {
+      state.data[row] = state.data[row].map(cell => ({ ...cell, currency: data.currency }));
+    });
+  }
 };
 
 const actions = {
@@ -36,6 +44,10 @@ const actions = {
 
   updateCellData({ commit }, data) {
     commit(UPDATE_CELL_DATA, data);
+  },
+
+  updateRowsCurrency({ commit }, data) {
+    commit(UPDATE_ROWS_CURRENCY, data);
   },
 
   fetchRates({ commit }, rates) {
