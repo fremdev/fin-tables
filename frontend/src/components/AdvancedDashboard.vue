@@ -5,7 +5,13 @@
 </template>
 
 <script>
+import MainControls from '@/components/MainControls';
+
 export default {
   name: 'advanced-dashboard',
+
+  components: {
+    MainControls,
+  },
 };
 </script>

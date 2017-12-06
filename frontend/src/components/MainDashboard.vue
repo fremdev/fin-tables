@@ -1,6 +1,7 @@
 <template>
   <div class="main-dashboard">
     <h1>Main Dashboard</h1>
+    <main-controls />
     <fin-table
       :titles="firstTableTitles"
       :tableData="firstTableValues" />
@@ -13,12 +14,14 @@
 <script>
 import { pick } from 'ramda';
 import FinTable from '@/components/finTable/FinTable';
+import MainControls from '@/components/MainControls';
 
 export default {
   name: 'main-dashboard',
 
   components: {
     FinTable,
+    MainControls,
   },
 
   props: {
