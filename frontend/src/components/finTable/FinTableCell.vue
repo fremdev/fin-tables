@@ -10,7 +10,8 @@
     </select>
   </div>
   <div v-else class="cell">
-    <span>{{ value }} {{ currency }}</span>
+    <span v-if="value">{{ shortValue }} {{ currency }}</span>
+    <span v-else="value">{{ value }} {{ currency }}</span>
   </div>
 
 </template>
@@ -37,6 +38,10 @@ export default {
     ...mapState({
       editMode: state => state.settings.editMode,
     }),
+
+    shortValue() {
+      return this.value ? this.value.toFixed(2) : this.value;
+    },
   },
 
   methods: {
