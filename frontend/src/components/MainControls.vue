@@ -2,15 +2,22 @@
   <div class="main-controls">
     <button v-if="!editMode" type="button" @click="handleEdit">Edit</button>
     <button v-if="editMode" type="button" @click="handleSave">Save</button>
+    <target-currency />
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
 import api from '@/helpers/api';
+import TargetCurrency from '@/components/TargetCurrency';
 
 export default {
   name: 'main-controls',
+
+  components: {
+    TargetCurrency,
+  },
+
   computed: {
     ...mapState({
       editMode: state => state.settings.editMode,
