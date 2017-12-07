@@ -10,7 +10,7 @@
     </select>
   </div>
   <div v-else class="cell">
-    <span v-if="value">{{ shortValue }} {{ currency }}</span>
+    <span v-if="value">{{ shortValue }} {{ currency }}/ {{ targetCurrencyValue }}</span>
     <span v-else="value">{{ value }} {{ currency }}</span>
   </div>
 
@@ -18,6 +18,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import convert from '@/helpers/convert';
 
 export default {
   name: 'fin-table-cell',
@@ -37,10 +38,20 @@ export default {
   computed: {
     ...mapState({
       editMode: state => state.settings.editMode,
+      targetCurrency: state => state.settings.targetCurrency,
+      rates: state => state.tablesData.rates,
     }),
 
     shortValue() {
       return this.value ? this.value.toFixed(2) : this.value;
+    },
+
+    targetCurrencyValue() {
+      if (this.currency !== this.targetCurrency) {
+        const { currency, value, targetCurrency, rates } = this;
+        return convert.convertTo({ currency, value }, rates, targetCurrency).toFixed(2);
+      }
+      return '';
     },
   },
 
