@@ -20,7 +20,7 @@ const mutations = {
     state.rates = rates;
   },
   [UPDATE_CELL_DATA](state, data) {
-    const row = {...state.data[data.title]};
+    const row = [...state.data[data.title]];
     row[data.index] = { ...data.data };
     state.data[data.title] = row;
   },
