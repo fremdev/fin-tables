@@ -1,7 +1,8 @@
 <template>
   <div class="dashboard">
     <navigation />
-    <router-view :tablesData="tablesData" />
+    <div v-if="isLoading">Fetching data...</div>
+    <router-view v-if="!isLoading" :tablesData="tablesData" />
   </div>
 </template>
 
@@ -16,9 +17,20 @@ export default {
     Navigation,
   },
 
+  data() {
+    return {
+      isRatesLoaded: false,
+      isTablesDataLoaded: false,
+    };
+  },
+
   mounted() {
-    this.fetchRates();
-    this.fetchTablesData();
+    this.fetchRates().then(() => {
+      this.isRatesLoaded = true;
+    });
+    this.fetchTablesData().then(() => {
+      this.isTablesDataLoaded = true;
+    });
   },
 
   computed: {
@@ -26,6 +38,9 @@ export default {
       rates: state => state.tablesData.rates,
       tablesData: state => state.tablesData.data,
     }),
+    isLoading() {
+      return !this.isRatesLoaded || !this.isTablesDataLoaded;
+    },
   },
 
   methods: {

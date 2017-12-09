@@ -42,7 +42,7 @@ const mutations = {
 
 const actions = {
   fetchTablesData({ commit }, data) {
-    api.getTablesData()
+    return api.getTablesData()
       .then((data) => {
         commit(SET_TABLES_DATA, data);
       })
@@ -60,7 +60,7 @@ const actions = {
   },
 
   fetchRates({ commit }, rates) {
-    api.getRates()
+    return api.getRates()
       .then((rates) => {
         commit(SET_RATES, rates);
       })
