@@ -27,13 +27,15 @@ const mutations = {
   },
   [UPDATE_ROWS_CURRENCY](state, data) {
     data.rows.forEach(row => {
-      state.data[row] = state.data[row].map(cell => {
-        if (cell.value) {
-          const convertedValue = convert.convertTo(cell, state.rates, data.currency);
-          return { value: convertedValue, currency: data.currency };
-        }
-        return { ...cell, currency: data.currency };
-      })
+      if (row !== 'Number acres') {
+        state.data[row] = state.data[row].map(cell => {
+          if (cell.value) {
+            const convertedValue = convert.convertTo(cell, state.rates, data.currency);
+            return { value: convertedValue, currency: data.currency };
+          }
+          return { ...cell, currency: data.currency };
+        })
+      }
     });
   }
 };

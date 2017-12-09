@@ -6,7 +6,8 @@
         :value="values[index] && values[index].value"
         :currency="values[index] && values[index].currency"
         :index="index"
-        :title="title" />
+        :title="title"
+        :inputType="inputType" />
     </td>
   </tr>
 </template>
@@ -37,6 +38,12 @@ export default {
     values: {
       type: Array,
       required: true,
+    },
+  },
+
+  computed: {
+    inputType() {
+      return this.title === 'Number acres' ? 'int' : 'float';
     },
   },
 };

@@ -1,7 +1,8 @@
 <template>
   <div v-if="editMode" class="cell">
-    <input type="text" :value="value" @change="handleValueChange" />
-    <select :value="currency" @change="handleCurrencyChange">
+    <input v-if="inputType==='int'" type="number" :value="value" @change="handleValueChange" />
+    <input v-if="inputType==='float'" type="text" :value="value" @change="handleValueChange" />
+    <select v-if="inputType==='float'" :value="currency" @change="handleCurrencyChange">
       <option value="CLP">CLP</option>
       <option value="CNY">CNY</option>
       <option value="EUR">EUR</option>
@@ -10,8 +11,8 @@
     </select>
   </div>
   <div v-else class="cell">
-    <span v-if="value">{{ shortValue }} {{ currency }} <span class="substring">{{ targetCurrencyValue }}</span></span>
-    <span v-else="value">{{ value }} {{ currency }}</span>
+    <span v-if="inputType==='float'">{{ shortValue }} {{ currency }} <span class="substring">{{ targetCurrencyValue }}</span></span>
+    <span v-if="inputType==='int'">{{ value }}</span>
   </div>
 
 </template>
@@ -33,6 +34,10 @@ export default {
     },
     value: {},
     currency: {},
+    inputType: {
+      type: String,
+      default: 'float',
+    },
   },
 
   computed: {
