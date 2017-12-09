@@ -2,6 +2,7 @@
   <div class="main-dashboard">
     <h1>Main Dashboard</h1>
     <main-controls />
+    <error-message />
     <fin-table
       :titles="firstTableTitles"
       :tableData="firstTableValues" />
@@ -15,6 +16,7 @@
 import { pick } from 'ramda';
 import FinTable from '@/components/finTable/FinTable';
 import MainControls from '@/components/MainControls';
+import ErrorMessage from '@/components/ErrorMessage';
 
 export default {
   name: 'main-dashboard',
@@ -22,6 +24,7 @@ export default {
   components: {
     FinTable,
     MainControls,
+    ErrorMessage,
   },
 
   props: {

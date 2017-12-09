@@ -58,18 +58,27 @@ export default {
   methods: {
     ...mapActions({
       updateCellData: 'updateCellData',
+      setErrorMessage: 'setErrorMessage',
     }),
 
     handleValueChange(e) {
       const { title, index, currency } = this;
       const value = Number(e.target.value);
+      this.setErrorMessage('');
+
       /* eslint-disable no-self-compare */
       if (value === value) {
+        if (this.inputType === 'int' && !Number.isInteger(value)) {
+          this.setErrorMessage('Number acres shoud be an integer');
+          return;
+        }
         this.updateCellData({
           title,
           index,
           data: { value, currency },
         });
+      } else {
+        this.setErrorMessage('All values should be numbers');
       }
     },
 

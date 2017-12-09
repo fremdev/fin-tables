@@ -3,6 +3,7 @@
     <button class="btn margin-right" v-if="!editMode" type="button" @click="handleEdit">Edit</button>
     <button class="btn margin-right" v-if="editMode" type="button" @click="handleSave">Save</button>
     <target-currency />
+    <error-message />
   </div>
 </template>
 
@@ -28,9 +29,11 @@ export default {
   methods: {
     ...mapActions({
       setEditMode: 'setEditMode',
+      setErrorMessage: 'setErrorMessage',
     }),
     handleSave() {
       this.setEditMode(false);
+      this.setErrorMessage('');
       api.saveTablesData(this.tablesData);
     },
     handleEdit() {
