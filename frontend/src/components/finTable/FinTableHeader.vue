@@ -55,3 +55,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+tr, th {
+  border: 1px solid black;
+}
+
+th {
+  background-color: #505763;
+  color: white;
+}
+</style>

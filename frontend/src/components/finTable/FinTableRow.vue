@@ -41,3 +41,17 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+tr, th, td {
+  border: 1px solid black;
+}
+th {
+  min-width: 150px;
+  background-color: #505763;
+  color: white;
+}
+td {
+  width: 150px;
+}
+</style>

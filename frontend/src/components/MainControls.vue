@@ -1,7 +1,7 @@
 <template>
   <div class="main-controls">
-    <button v-if="!editMode" type="button" @click="handleEdit">Edit</button>
-    <button v-if="editMode" type="button" @click="handleSave">Save</button>
+    <button class="btn margin-right" v-if="!editMode" type="button" @click="handleEdit">Edit</button>
+    <button class="btn margin-right" v-if="editMode" type="button" @click="handleSave">Save</button>
     <target-currency />
   </div>
 </template>
@@ -39,3 +39,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.main-controls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+</style>

@@ -10,7 +10,7 @@
     </select>
   </div>
   <div v-else class="cell">
-    <span v-if="value">{{ shortValue }} {{ currency }}/ {{ targetCurrencyValue }}</span>
+    <span v-if="value">{{ shortValue }} {{ currency }} <span class="substring">{{ targetCurrencyValue }}</span></span>
     <span v-else="value">{{ value }} {{ currency }}</span>
   </div>
 
@@ -85,3 +85,17 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.cell {
+  display: flex;
+}
+
+.cell input {
+  width: 100px;
+}
+
+.substring {
+  font-size: 0.75rem;
+}
+</style>

@@ -47,3 +47,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+table {
+  border-collapse: collapse;
+}
+
+table {
+  border: 1px solid black;
+  margin-bottom: 2rem;
+}
+</style>
