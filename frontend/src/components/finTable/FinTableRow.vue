@@ -52,6 +52,7 @@ export default {
 <style scoped>
 tr, th, td {
   border: 1px solid black;
+  height: 40px;
 }
 th {
   min-width: 150px;
@@ -59,6 +60,8 @@ th {
   color: white;
 }
 td {
-  width: 150px;
+  width: 160px;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
 }
 </style>
