@@ -1,10 +1,1 @@
-{
-  "Revenue": [],
-  "Profit": [{"value": 100, "currency": "USD"}, {"value": 50, "currency": "USD"}, {"value": 75, "currency": "USD"}, {"value": 80, "currency": "USD"}],
-  "Gross Income": [],
-  "Assets": [],
-  "Liabilities": [],
-  "Price per acre": [],
-  "Number acres": [],
-  "Input costs": []
-}
+{"Revenue":[{"value":25,"currency":"CLP"},{"value":2250,"currency":"CLP"},{"value":3750,"currency":"CLP"},{"value":450000,"currency":"CLP"}],"Profit":[{"value":66285.75,"currency":"CLP"},{"value":37542.88,"currency":"CLP"},{"value":45500,"currency":"CLP"},{"value":37500,"currency":"CLP"}],"Gross Income":[{"value":250,"currency":"CLP"},{"value":375.25,"currency":"CLP"},{"value":450.34,"currency":"CLP"},{"value":825,"currency":"CLP"}],"Assets":[{"value":10500,"currency":"CNY"},{"value":10375.25,"currency":"CNY"},{"value":18.5,"currency":"CNY"},{"value":25,"currency":"CNY"}],"Liabilities":[{"value":3.25,"currency":"CNY"},{"value":5,"currency":"CNY"},{"value":8,"currency":"CNY"},{"value":22,"currency":"CNY"}],"Price per acre":[{"value":37680,"currency":"CLP"},{"value":35285,"currency":"CLP"},{"value":45000050.25,"currency":"CLP"},{"value":95250,"currency":"CLP"}],"Number acres":[{"value":0,"currency":""},{"value":5,"currency":""},{"value":350,"currency":""},{"value":1180,"currency":""}],"Input costs":[{"value":325546.2,"currency":"CLP"},{"value":55258.5,"currency":"CLP"},{"value":233548.25,"currency":"CLP"},{"value":258445.25,"currency":"CLP"}]}
